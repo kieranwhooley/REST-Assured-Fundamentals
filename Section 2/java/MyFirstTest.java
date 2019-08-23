@@ -1,3 +1,4 @@
+import config.EndPoint;
 import config.TestConfig;
 import org.junit.Test;
 
@@ -9,12 +10,21 @@ public class MyFirstTest extends TestConfig {
     public void myFirstTest() {
         given().
                 log().
-                ifValidationFails().
-        when().get("videogames/3").
+                all().
+        when().get("videogames/1").
         then().
                 log().
-                all().
-                statusCode(200);
+                all();
+    }
+
+    @Test
+    public void getAllGames() {
+        when().get(EndPoint.GET_VIDEOGAMES);
+    }
+
+    @Test
+    public void getAllPremierLeagueTeam() {
+        when().get(EndPoint.GET_PREMIER_LEAGUE_TEAMS);
     }
 
 }
